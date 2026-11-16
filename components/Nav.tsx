@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { site } from "@/site.config";
+import Logo from "./Logo";
 
 const links = [
   ["Services", "#services"],
@@ -14,10 +15,8 @@ export default function Nav() {
   return (
     <header className="fixed inset-x-0 top-4 z-50 px-4">
       <nav className="glass mx-auto flex max-w-5xl items-center justify-between rounded-2xl px-4 py-3">
-        <a href="#top" className="flex items-center gap-2 font-semibold">
-          <span className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-to-br from-ember to-rose text-sm text-ink">
-            {site.name.charAt(0)}
-          </span>
+        <a href="#top" className="flex items-center gap-2.5 text-lg font-semibold tracking-tight" aria-label={site.name}>
+          <Logo className="h-5 w-auto" />
           {site.name}
         </a>
         <div className="hidden items-center gap-7 text-sm text-muted md:flex">

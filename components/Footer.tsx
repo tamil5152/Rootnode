@@ -1,4 +1,5 @@
 import { site } from "@/site.config";
+import Logo from "./Logo";
 
 export default function Footer() {
   const cols: [string, [string, string][]][] = [
@@ -10,7 +11,7 @@ export default function Footer() {
     <footer className="border-t border-line">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-4">
         <div>
-          <p className="font-semibold">{site.name}</p>
+          <p className="flex items-center gap-2.5 font-semibold"><Logo className="h-4 w-auto" />{site.name}</p>
           <p className="mt-2 text-sm text-muted">{site.tagline}</p>
         </div>
         {cols.map(([title, links]) => (
