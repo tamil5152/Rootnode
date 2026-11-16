@@ -20,24 +20,49 @@ export default function Contact() {
     };
     setStatus("sending");
 
-    // 1) Email the enquiry to you (FormSubmit.co, free, no account needed).
-    const mail = fetch(`https://formsubmit.co/ajax/${site.enquiryEmail}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        _subject: `New enquiry from ${row.name} | ${site.name}`,
-        _template: "table",
-        _replyto: row.email,
-        _captcha: "false",
-        Name: row.name,
-        Email: row.email,
-        Budget: row.budget || "Not given",
-        Message: row.message,
-      }),
-    })
+    // 1) Email the enquiry to you.
+    //    If NEXT_PUBLIC_WEB3FORMS_KEY is set (free key from web3forms.com), use Web3Forms.
+    //    Otherwise use FormSubmit.co, which needs a one-time "Activate Form" click.
+    const w3key = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+    const fields = {
+      Name: row.name,
+      Email: row.email,
+      Budget: row.budget || "Not given",
+      Message: row.message,
+    };
+    const mail = (w3key
+      ? fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: w3key,
+            subject: `New enquiry from ${row.name} | ${site.name}`,
+            from_name: `${site.name} website`,
+            replyto: row.email,
+            ...fields,
+          }),
+        })
+      : fetch(`https://formsubmit.co/ajax/${site.enquiryEmail}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            _subject: `New enquiry from ${row.name} | ${site.name}`,
+            _template: "table",
+            _replyto: row.email,
+            _captcha: "false",
+            ...fields,
+          }),
+        })
+    )
       .then((r) => r.json())
-      .then((j) => String(j.success) === "true")
-      .catch(() => false);
+      .then((j) => {
+        if (String(j.success) !== "true") console.warn("Enquiry email not sent:", j.message || j);
+        return String(j.success) === "true";
+      })
+      .catch((err) => {
+        console.warn("Enquiry email failed:", err);
+        return false;
+      });
 
     // 2) Also save a copy in Supabase, if it is set up (optional).
     const db = supabase
