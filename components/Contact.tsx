@@ -2,7 +2,8 @@
 import { useState } from "react";
 import Horizon from "./Horizon";
 import { supabase } from "@/lib/supabase";
-import { site } from "@/site.config";
+import { site, whatsappLink, whatsappDisplay } from "@/site.config";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -114,7 +115,14 @@ export default function Contact() {
             <span className="font-serif font-normal italic text-gradient">Let&apos;s build it.</span>
           </h2>
           <p className="mt-5 max-w-md text-white/70">Tell me about your project and I&apos;ll reply within one working day with next steps.</p>
-          <p className="mt-6 text-sm text-white/60">Or email <a className="underline" href={`mailto:${site.email}`}>{site.email}</a></p>
+          <div className="mt-6 space-y-2 text-sm">
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/80 hover:text-white">
+              <WhatsAppIcon className="h-4 w-4 text-[#25D366]" /> WhatsApp: <span className="underline">{whatsappDisplay}</span>
+            </a>
+            <a href={`mailto:${site.email}`} className="flex items-center gap-2 break-all text-white/80 hover:text-white">
+              <span aria-hidden>✉</span> Email: <span className="underline">{site.email}</span>
+            </a>
+          </div>
         </div>
         <form onSubmit={onSubmit} className="glass space-y-3 rounded-3xl p-6 sm:p-8">
           <div className="grid gap-3 sm:grid-cols-2">

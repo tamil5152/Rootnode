@@ -3,10 +3,11 @@
 export const sectionRoutes: Record<string, { id: string; title: string }> = {
   services: { id: "services", title: "Services" },
   roadmap: { id: "roadmap", title: "Our roadmap" },
-  testimonials: { id: "testimonials", title: "Client testimonials" },
+  projects: { id: "projects", title: "Projects" },
+  testimonials: { id: "projects", title: "Projects" },
   faq: { id: "faq", title: "FAQ" },
   contact: { id: "contact", title: "Contact" },
-  pricing: { id: "contact", title: "Get a quote" }, // pricing → enquiry form
+  pricing: { id: "pricing", title: "Pricing" },
 };
 
 export function idForPath(path: string): string | null {

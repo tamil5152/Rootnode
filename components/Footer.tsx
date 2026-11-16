@@ -1,11 +1,11 @@
 import SectionLink from "./SectionLink";
-import { site } from "@/site.config";
+import { site, whatsappLink, whatsappDisplay } from "@/site.config";
 import Logo from "./Logo";
 
 export default function Footer() {
   const cols: [string, [string, string][]][] = [
     ["Navigation", [["Services", "/services"], ["Roadmap", "/roadmap"], ["Pricing", "/pricing"], ["FAQ", "/faq"]]],
-    ["Contact", [["Email", `mailto:${site.email}`], ["Book a call", site.calendarUrl]]],
+    ["Contact", [[`WhatsApp ${whatsappDisplay}`, whatsappLink], [site.email, `mailto:${site.email}`], ["Book a call", site.calendarUrl]]],
     ["Socials", [["LinkedIn", site.socials.linkedin], ["X", site.socials.x]]],
   ];
   return (
@@ -14,12 +14,13 @@ export default function Footer() {
         <div>
           <p className="flex items-center gap-2.5 font-semibold"><Logo className="h-4 w-auto" />{site.name}</p>
           <p className="mt-3 text-sm leading-relaxed text-muted">{site.about}</p>
+          <p className="mt-3 text-sm text-white/70">{site.areas}</p>
         </div>
         {cols.map(([title, links]) => (
           <div key={title}>
             <p className="text-sm font-medium">{title}</p>
             <ul className="mt-3 space-y-2 text-sm text-muted">
-              {links.map(([l, h]) => <li key={l}>{h.startsWith("/") ? <SectionLink href={h} className="hover:text-white">{l}</SectionLink> : <a href={h} className="hover:text-white">{l}</a>}</li>)}
+              {links.map(([l, h]) => <li key={l}>{h.startsWith("/") ? <SectionLink href={h} className="hover:text-white">{l}</SectionLink> : <a href={h} {...(h.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="break-all hover:text-white">{l}</a>}</li>)}
             </ul>
           </div>
         ))}

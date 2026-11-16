@@ -1,13 +1,23 @@
 // ─────────────────────────────────────────────────────────────
-// Everything about YOUR business lives here. Change the name once
-// you pick one, and the whole site updates.
+// Everything about YOUR business lives here.
 // ─────────────────────────────────────────────────────────────
+
+// WhatsApp number used by every WhatsApp button on the site.
+// Country code + number, digits only (91 = India).
+export const WHATSAPP_NUMBER = "919384515257";
+
+const WHATSAPP_MESSAGE = "Hi Rootnode, I want to know about a website for my business";
+export const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+// Readable form for display, e.g. "+91 93845 15257"
+export const whatsappDisplay = `+${WHATSAPP_NUMBER.slice(0, 2)} ${WHATSAPP_NUMBER.slice(2, 7)} ${WHATSAPP_NUMBER.slice(7)}`;
+
 export const site = {
   name: "Rootnode",            // ← your company name
-  tagline: "Software, automation and cloud, built by one dedicated engineer.",
+  tagline: "Websites, WhatsApp booking and Google setup for clinics, schools and salons in Hosur.",
   // Short company description shown in the footer.
   about:
-    "Rootnode is an independent software studio that helps startups and small businesses turn ideas into working products. We design and build websites, web apps, AI automations and cloud setups, with a clear scope, weekly progress and code you fully own.",
+    "Rootnode helps clinics, schools and salons get more patients, students and bookings online. We build fast websites, WhatsApp booking and Google setup, and keep everything running for you.",
+  areas: "Serving Hosur, Krishnagiri and Attibele",
   email: "rootnodesolutions.care@gmail.com", // ← email shown on the site
   enquiryEmail: "rootnodesolutions.care@gmail.com", // ← where enquiry form messages are sent
   minBudget: 8000,               // ← enquiries below this budget are not accepted
@@ -16,5 +26,5 @@ export const site = {
     linkedin: "https://linkedin.com/",
     x: "https://x.com/",
   },
-  currency: "$",
+  currency: "₹",
 };

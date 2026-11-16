@@ -2,7 +2,8 @@
 import SectionLink from "./SectionLink";
 import { motion } from "framer-motion";
 import Horizon from "./Horizon";
-import { site } from "@/site.config";
+import { site, whatsappLink } from "@/site.config";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 export default function Hero() {
   return (
@@ -17,25 +18,31 @@ export default function Hero() {
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-4xl font-semibold leading-[1.05] tracking-tight sm:text-7xl"
+          className="text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl"
         >
-          Software that ships.
+          Get more patients and bookings,
           <br />
-          <span className="font-serif font-normal italic text-gradient">Built to last.</span>
+          <span className="font-serif font-normal italic text-gradient">without chasing them.</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
           className="mx-auto mt-6 max-w-xl text-lg text-white/70"
         >
-          {site.name} designs and builds web apps, AI automations and cloud setups for founders and small teams, from first idea to launch.
+          Website, WhatsApp booking and Google setup for clinics, schools and salons in Hosur. Live in 10 days.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}
           className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
-          <SectionLink href="/contact" className="rounded-xl bg-white px-6 py-3 font-medium text-ink transition hover:bg-white/85">Start a project</SectionLink>
-          <SectionLink href="/roadmap" className="glass rounded-xl px-6 py-3 font-medium text-white/90 transition hover:bg-white/10">See how I work ↓</SectionLink>
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-medium text-ink transition hover:bg-white/85"><WhatsAppIcon /> Chat on WhatsApp</a>
+          <SectionLink href="/pricing" className="glass rounded-xl px-6 py-3 font-medium text-white/90 transition hover:bg-white/10">See packages ↓</SectionLink>
         </motion.div>
+        <motion.p
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.45 }}
+          className="mt-5 text-xs text-white/55"
+        >
+          {site.areas}
+        </motion.p>
       </div>
     </section>
   );

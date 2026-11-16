@@ -7,6 +7,8 @@ import Compare from "./Compare";
 import Testimonials from "./Testimonials";
 import FAQ from "./FAQ";
 import Contact from "./Contact";
+import Pricing from "./Pricing";
+import Guarantee from "./Guarantee";
 import Footer from "./Footer";
 import ScrollManager from "./ScrollManager";
 
@@ -19,11 +21,13 @@ export default function HomePage() {
         <Hero />
         <Services />
         <Roadmap />
-        <Capabilities />
+        <Pricing />
+        <Guarantee />
         <Compare />
         <Testimonials />
         <FAQ />
         <Contact />
+        <Capabilities />
       </main>
       <Footer />
     </>

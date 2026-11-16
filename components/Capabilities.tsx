@@ -8,7 +8,7 @@ const items = [
   ["Supabase and Postgres", "Databases, logins and file storage done right."],
   ["AI integrations", "Chatbots, document search and smart automations."],
   ["Mobile-ready design", "Every screen looks sharp from phone to desktop."],
-  ["Cloud and CI/CD", "Vercel, AWS or GCP with automatic deploys."],
+  ["Hosting and automatic updates", "Vercel, AWS or GCP with automatic deploys."],
 ];
 
 export default function Capabilities() {

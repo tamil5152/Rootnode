@@ -5,11 +5,12 @@ import SectionHeading from "./SectionHeading";
 
 const faqs = [
   ["How long does a project take?", "A starter site takes about two weeks. A product build is usually four to eight weeks, depending on scope. You get a timeline in writing before we begin."],
-  ["How does payment work?", "Fixed-price projects are split 50% upfront and 50% on launch. Retainers are billed monthly and you can cancel anytime."],
-  ["Who owns the code?", "You do, completely. The code lives in your GitHub account and runs on hosting you control."],
-  ["Do you work with clients in other time zones?", "Yes. I work async with written updates and keep a few overlapping hours for calls."],
-  ["Can you take over an existing project?", "Yes. I start with a short paid code review, then give you a plan to fix, improve or rebuild."],
-  ["What happens after launch?", "Every project includes support after launch, and many clients move onto a small monthly retainer."],
+  ["How does payment work?", "50% to start, 30% after you see the demo, 20% at go-live."],
+  ["Who owns the website?", "You do. The website and domain are registered in your name."],
+  ["Where are you based?", "I'm based in Hosur, Tamil Nadu, and reply on WhatsApp the same day."],
+  ["Can you take over an existing project?", "Yes, after a quick review of what you have."],
+  ["What happens after launch?", "30 days of free fixes, then an optional monthly plan."],
+  ["Can it be in Tamil?", "Yes. Tamil, English, or both."],
 ];
 
 export default function FAQ() {

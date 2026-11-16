@@ -14,7 +14,7 @@ function BrowserMock() {
 function FlowMock() {
   return (
     <div className="flex items-center justify-between rounded-xl border border-line bg-ink/80 p-4 text-[10px] text-muted">
-      {["Email", "AI", "CRM"].map((n, i) => (
+      {["Chat", "Auto", "Book"].map((n, i) => (
         <div key={n} className="flex items-center gap-2">
           <span className={`grid h-10 w-10 place-items-center rounded-lg border border-line ${i === 1 ? "bg-rose/25 text-white" : "bg-white/5"}`}>{n}</span>
           {i < 2 && <span className="h-px w-5 bg-gradient-to-r from-ember to-rose sm:w-8" />}
@@ -34,9 +34,9 @@ function UptimeMock() {
 }
 
 const services = [
-  { title: "Web apps and websites", text: "Fast, search-friendly sites and full web apps with logins, dashboards and payments.", mock: <BrowserMock /> },
-  { title: "AI and automation", text: "Connect your tools and let AI handle the repetitive work: inboxes, reports, data entry.", mock: <FlowMock /> },
-  { title: "Cloud and DevOps", text: "Hosting, databases, CI/CD and monitoring set up properly, so nothing breaks at 2am.", mock: <UptimeMock /> },
+  { title: "Website and online booking", text: "A fast website that shows up on Google, with booking and enquiry forms.", mock: <BrowserMock /> },
+  { title: "WhatsApp automation", text: "Auto-replies, bookings and reminders, so you never miss a customer.", mock: <FlowMock /> },
+  { title: "Always online", text: "Hosting, backups and monthly updates, handled for you.", mock: <UptimeMock /> },
 ];
 
 export default function Services() {
