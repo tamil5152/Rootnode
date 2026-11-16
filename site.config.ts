@@ -8,8 +8,8 @@ export const site = {
   // Short company description shown in the footer.
   about:
     "Rootnode is an independent software studio that helps startups and small businesses turn ideas into working products. We design and build websites, web apps, AI automations and cloud setups, with a clear scope, weekly progress and code you fully own.",
-  email: "hello@example.com",     // ← email shown on the site
-  enquiryEmail: "tamil515253@gmail.com", // ← where enquiry form messages are sent
+  email: "rootnodesolutions.care@gmail.com", // ← email shown on the site
+  enquiryEmail: "rootnodesolutions.care@gmail.com", // ← where enquiry form messages are sent
   calendarUrl: "/contact",        // ← e.g. your Calendly link
   socials: {
     linkedin: "https://linkedin.com/",
