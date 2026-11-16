@@ -6,12 +6,35 @@ import { site } from "@/site.config";
 
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [budgetError, setBudgetError] = useState("");
+  const min = site.minBudget;
+  const minText = min.toLocaleString("en-IN");
+
+  // Accepts "15000", "15,000" or "15k". Returns NaN if it isn't a number.
+  function parseBudget(v: string) {
+    const t = v.replace(/[,\s₹$]/g, "").toLowerCase();
+    const k = t.endsWith("k");
+    const n = Number(k ? t.slice(0, -1) : t);
+    return t === "" || (k ? t.length < 2 : false) ? NaN : k ? n * 1000 : n;
+  }
+  function checkBudget(v: string) {
+    const n = parseBudget(v);
+    if (isNaN(n)) return "Please enter your budget as a number, e.g. 15000.";
+    if (n < min) return `The minimum project budget is ${minText}.`;
+    return "";
+  }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     // Keep a reference to the form: React clears e.currentTarget after "await".
     const form = e.currentTarget;
     const f = new FormData(form);
+    const budgetMsg = checkBudget(String(f.get("budget") || ""));
+    setBudgetError(budgetMsg);
+    if (budgetMsg) {
+      (form.elements.namedItem("budget") as HTMLInputElement | null)?.focus();
+      return; // don't send
+    }
     const row = {
       name: String(f.get("name") || "").trim(),
       email: String(f.get("email") || "").trim(),
@@ -98,7 +121,19 @@ export default function Contact() {
             <input name="name" required maxLength={120} placeholder="Your name" className={input} />
             <input name="email" required type="email" maxLength={200} placeholder="Email" className={input} />
           </div>
-          <input name="budget" inputMode="numeric" maxLength={60} placeholder="Your budget (e.g. 15000)" className={input} />
+          <div>
+            <input
+              name="budget"
+              required
+              inputMode="numeric"
+              maxLength={20}
+              placeholder={`Your budget (min ${minText})`}
+              aria-invalid={!!budgetError}
+              onChange={(e) => budgetError && setBudgetError(checkBudget(e.target.value))}
+              className={`${input} ${budgetError ? "border-rose/70" : ""}`}
+            />
+            {budgetError && <p className="mt-1.5 text-xs text-rose">{budgetError}</p>}
+          </div>
           <textarea name="message" required maxLength={4000} rows={5} placeholder="What would you like to build?" className={input} />
           <button disabled={status === "sending"} className="w-full rounded-xl bg-white px-4 py-3 font-medium text-ink transition hover:bg-white/85 disabled:opacity-60">
             {status === "sending" ? "Sending…" : "Send message"}
