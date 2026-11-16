@@ -13,6 +13,9 @@ export const whatsappDisplay = `+${WHATSAPP_NUMBER.slice(0, 2)} ${WHATSAPP_NUMBE
 
 export const site = {
   name: "Rootnode",            // ← your company name
+  // Live address of the site, no trailing slash. Used for Google (sitemap, canonical URLs, share previews).
+  // Change this when you move to your own domain.
+  url: "https://rootnodesolutions.vercel.app",
   tagline: "Websites, WhatsApp booking and Google setup for clinics, schools and salons in Hosur.",
   // Short company description shown in the footer.
   about:

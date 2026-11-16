@@ -102,7 +102,7 @@ export default function Contact() {
     }
   }
 
-  const input = "w-full rounded-xl border border-line bg-ink/60 px-4 py-3 text-sm outline-none placeholder:text-white/30 focus:border-ember/60";
+  const input = "w-full rounded-xl border border-line bg-ink/60 px-4 py-3 text-base outline-none placeholder:text-white/30 focus:border-ember/60";
 
   return (
     <section id="contact" className="relative overflow-hidden py-28">

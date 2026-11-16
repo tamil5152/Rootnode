@@ -15,7 +15,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ section: string }> }): Promise<Metadata> {
   const { section } = await params;
   const r = sectionRoutes[section];
-  return r ? { title: `${r.title} | ${site.name}`, alternates: { canonical: `/${section}` } } : {};
+  // Same content as the home page, so point Google at "/" to avoid duplicate pages.
+  return r ? { title: `${r.title} | ${site.name}`, alternates: { canonical: "/" } } : {};
 }
 
 export default async function SectionPage({ params }: { params: Promise<{ section: string }> }) {

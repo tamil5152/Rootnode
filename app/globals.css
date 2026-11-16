@@ -36,3 +36,8 @@ body { background: var(--color-ink); color: #f3f4f7; }
   .animate-marquee { animation: none; }
   html { scroll-behavior: auto; }
 }
+
+/* Hero entrance: pure CSS so it starts at first paint, before JavaScript. */
+@keyframes heroIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.hero-in { animation: heroIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@media (prefers-reduced-motion: reduce) { .hero-in { animation: none; } }
