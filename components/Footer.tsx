@@ -3,16 +3,16 @@ import Logo from "./Logo";
 
 export default function Footer() {
   const cols: [string, [string, string][]][] = [
-    ["Navigation", [["Services", "#services"], ["Process", "#process"], ["Pricing", "#pricing"], ["FAQ", "#faq"]]],
+    ["Navigation", [["Services", "#services"], ["Process", "#process"], ["Pricing", "#contact"], ["FAQ", "#faq"]]],
     ["Contact", [["Email", `mailto:${site.email}`], ["Book a call", site.calendarUrl]]],
-    ["Socials", [["GitHub", site.socials.github], ["LinkedIn", site.socials.linkedin], ["X", site.socials.x]]],
+    ["Socials", [["LinkedIn", site.socials.linkedin], ["X", site.socials.x]]],
   ];
   return (
     <footer className="border-t border-line">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
         <div>
           <p className="flex items-center gap-2.5 font-semibold"><Logo className="h-4 w-auto" />{site.name}</p>
-          <p className="mt-2 text-sm text-muted">{site.tagline}</p>
+          <p className="mt-3 text-sm leading-relaxed text-muted">{site.about}</p>
         </div>
         {cols.map(([title, links]) => (
           <div key={title}>

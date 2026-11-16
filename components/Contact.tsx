@@ -18,7 +18,7 @@ export default function Contact() {
     };
     // No Supabase keys yet? Open the visitor's email app instead.
     if (!supabase) {
-      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent("Project enquiry from " + row.name)}&body=${encodeURIComponent(row.message + "\n\nBudget: " + row.budget)}`;
+      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent("Project enquiry from " + row.name)}&body=${encodeURIComponent(row.message + "\n\nBudget: " + (row.budget || "not given"))}`;
       return;
     }
     setStatus("sending");
@@ -47,10 +47,7 @@ export default function Contact() {
             <input name="name" required maxLength={120} placeholder="Your name" className={input} />
             <input name="email" required type="email" maxLength={200} placeholder="Email" className={input} />
           </div>
-          <select name="budget" className={input} defaultValue="">
-            <option value="" disabled>Budget</option>
-            <option>Under $1,500</option><option>$1,500 to $5,000</option><option>$5,000 to $15,000</option><option>$15,000+</option>
-          </select>
+          <input name="budget" inputMode="numeric" maxLength={60} placeholder="Your budget (e.g. 15000)" className={input} />
           <textarea name="message" required maxLength={4000} rows={5} placeholder="What would you like to build?" className={input} />
           <button disabled={status === "sending"} className="w-full rounded-xl bg-white px-4 py-3 font-medium text-ink transition hover:bg-white/85 disabled:opacity-60">
             {status === "sending" ? "Sending…" : "Send message"}

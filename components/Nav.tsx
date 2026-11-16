@@ -6,7 +6,7 @@ import Logo from "./Logo";
 const links = [
   ["Services", "#services"],
   ["Process", "#process"],
-  ["Pricing", "#pricing"],
+  ["Pricing", "#contact"],
   ["FAQ", "#faq"],
 ];
 
@@ -21,7 +21,7 @@ export default function Nav() {
         </a>
         <div className="hidden items-center gap-7 text-sm text-muted md:flex">
           {links.map(([label, href]) => (
-            <a key={href} href={href} className="transition hover:text-white">{label}</a>
+            <a key={label} href={href} className="transition hover:text-white">{label}</a>
           ))}
         </div>
         <a href="#contact" className="hidden rounded-xl bg-white px-4 py-2 text-sm font-medium text-ink transition hover:bg-white/85 md:inline-block">
@@ -34,7 +34,7 @@ export default function Nav() {
       {open && (
         <div className="glass mx-auto mt-2 flex max-w-5xl flex-col gap-1 rounded-2xl p-3 md:hidden">
           {[...links, ["Book a call", "#contact"]].map(([label, href]) => (
-            <a key={href} href={href} onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-muted hover:bg-white/5 hover:text-white">{label}</a>
+            <a key={label} href={href} onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-muted hover:bg-white/5 hover:text-white">{label}</a>
           ))}
         </div>
       )}

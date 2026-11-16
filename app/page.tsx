@@ -6,7 +6,6 @@ import Process from "@/components/Process";
 import Capabilities from "@/components/Capabilities";
 import Compare from "@/components/Compare";
 import Testimonials from "@/components/Testimonials";
-import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -23,7 +22,6 @@ export default function Home() {
         <Capabilities />
         <Compare />
         <Testimonials />
-        <Pricing />
         <FAQ />
         <Contact />
       </main>
