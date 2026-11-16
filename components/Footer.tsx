@@ -3,7 +3,7 @@ import Logo from "./Logo";
 
 export default function Footer() {
   const cols: [string, [string, string][]][] = [
-    ["Navigation", [["Services", "#services"], ["Process", "#process"], ["Pricing", "#contact"], ["FAQ", "#faq"]]],
+    ["Navigation", [["Services", "#services"], ["Roadmap", "#roadmap"], ["Pricing", "#contact"], ["FAQ", "#faq"]]],
     ["Contact", [["Email", `mailto:${site.email}`], ["Book a call", site.calendarUrl]]],
     ["Socials", [["LinkedIn", site.socials.linkedin], ["X", site.socials.x]]],
   ];

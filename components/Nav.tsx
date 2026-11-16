@@ -5,7 +5,7 @@ import Logo from "./Logo";
 
 const links = [
   ["Services", "#services"],
-  ["Process", "#process"],
+  ["Roadmap", "#roadmap"],
   ["Pricing", "#contact"],
   ["FAQ", "#faq"],
 ];

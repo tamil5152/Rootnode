@@ -1,8 +1,7 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
+import Roadmap from "@/components/Roadmap";
 import Services from "@/components/Services";
-import Process from "@/components/Process";
 import Capabilities from "@/components/Capabilities";
 import Compare from "@/components/Compare";
 import Testimonials from "@/components/Testimonials";
@@ -16,9 +15,8 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Stats />
         <Services />
-        <Process />
+        <Roadmap />
         <Capabilities />
         <Compare />
         <Testimonials />
