@@ -15,12 +15,12 @@ Framer Motion and (optionally) Supabase for the contact form.
 - **Stats are samples. Client testimonials (components/Testimonials.tsx) are draft wordings: get each client to approve theirs.** Replace them with real ones before launch.
 - **Colors:** the `@theme` block at the top of `app/globals.css`
 
-## Contact form (Supabase, optional)
-Without keys, the form opens the visitor's email app. To save messages in Supabase:
-1. In Supabase, open the SQL editor and run `supabase/migrations/0001_contact_messages.sql`
-2. Copy `.env.example` to `.env.local` and paste your project URL and publishable (anon) key
-3. Restart `npm run dev`. New messages appear in Table Editor → `contact_messages`.
-Visitors can only add messages; they can never read them (Row Level Security).
+## Contact form
+Every enquiry is emailed to `enquiryEmail` in `site.config.ts` using FormSubmit.co (free, no account).
+- The very first time the form is used, FormSubmit sends an "Activate Form" email to that address. Click the button in it once; after that every enquiry arrives in your inbox.
+- Optional: FormSubmit's activation email also gives you a random alias. Put it in `enquiryEmail` instead of your address to hide your email from the site's code.
+
+Optional copy in Supabase: run `supabase/migrations/0001_contact_messages.sql` in the Supabase SQL editor and set the two `NEXT_PUBLIC_SUPABASE_*` variables (see `.env.example`). Messages then also appear in Table Editor → `contact_messages`.
 
 ## Put it online (free)
 Push this folder to a GitHub repo, then import it at https://vercel.com/new.

@@ -9,22 +9,48 @@ export default function Contact() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const f = new FormData(e.currentTarget);
+    // Keep a reference to the form: React clears e.currentTarget after "await".
+    const form = e.currentTarget;
+    const f = new FormData(form);
     const row = {
       name: String(f.get("name") || "").trim(),
       email: String(f.get("email") || "").trim(),
-      budget: String(f.get("budget") || ""),
+      budget: String(f.get("budget") || "").trim(),
       message: String(f.get("message") || "").trim(),
     };
-    // No Supabase keys yet? Open the visitor's email app instead.
-    if (!supabase) {
-      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent("Project enquiry from " + row.name)}&body=${encodeURIComponent(row.message + "\n\nBudget: " + (row.budget || "not given"))}`;
-      return;
-    }
     setStatus("sending");
-    const { error } = await supabase.from("contact_messages").insert(row);
-    setStatus(error ? "error" : "sent");
-    if (!error) e.currentTarget.reset();
+
+    // 1) Email the enquiry to you (FormSubmit.co, free, no account needed).
+    const mail = fetch(`https://formsubmit.co/ajax/${site.enquiryEmail}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        _subject: `New enquiry from ${row.name} | ${site.name}`,
+        _template: "table",
+        _replyto: row.email,
+        _captcha: "false",
+        Name: row.name,
+        Email: row.email,
+        Budget: row.budget || "Not given",
+        Message: row.message,
+      }),
+    })
+      .then((r) => r.json())
+      .then((j) => String(j.success) === "true")
+      .catch(() => false);
+
+    // 2) Also save a copy in Supabase, if it is set up (optional).
+    const db = supabase
+      ? supabase.from("contact_messages").insert(row).then(({ error }) => !error, () => false)
+      : Promise.resolve(false);
+
+    const [mailed, saved] = await Promise.all([mail, db]);
+    if (mailed || saved) {
+      form.reset(); // clear the boxes
+      setStatus("sent");
+    } else {
+      setStatus("error");
+    }
   }
 
   const input = "w-full rounded-xl border border-line bg-ink/60 px-4 py-3 text-sm outline-none placeholder:text-white/30 focus:border-ember/60";
