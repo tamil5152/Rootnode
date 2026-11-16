@@ -9,7 +9,7 @@ export const site = {
   about:
     "Rootnode is an independent software studio that helps startups and small businesses turn ideas into working products. We design and build websites, web apps, AI automations and cloud setups, with a clear scope, weekly progress and code you fully own.",
   email: "hello@example.com",     // ← your email
-  calendarUrl: "#contact",        // ← e.g. your Calendly link
+  calendarUrl: "/contact",        // ← e.g. your Calendly link
   socials: {
     linkedin: "https://linkedin.com/",
     x: "https://x.com/",

@@ -1,9 +1,10 @@
+import SectionLink from "./SectionLink";
 import { site } from "@/site.config";
 import Logo from "./Logo";
 
 export default function Footer() {
   const cols: [string, [string, string][]][] = [
-    ["Navigation", [["Services", "#services"], ["Roadmap", "#roadmap"], ["Pricing", "#contact"], ["FAQ", "#faq"]]],
+    ["Navigation", [["Services", "/services"], ["Roadmap", "/roadmap"], ["Pricing", "/pricing"], ["FAQ", "/faq"]]],
     ["Contact", [["Email", `mailto:${site.email}`], ["Book a call", site.calendarUrl]]],
     ["Socials", [["LinkedIn", site.socials.linkedin], ["X", site.socials.x]]],
   ];
@@ -18,7 +19,7 @@ export default function Footer() {
           <div key={title}>
             <p className="text-sm font-medium">{title}</p>
             <ul className="mt-3 space-y-2 text-sm text-muted">
-              {links.map(([l, h]) => <li key={l}><a href={h} className="hover:text-white">{l}</a></li>)}
+              {links.map(([l, h]) => <li key={l}>{h.startsWith("/") ? <SectionLink href={h} className="hover:text-white">{l}</SectionLink> : <a href={h} className="hover:text-white">{l}</a>}</li>)}
             </ul>
           </div>
         ))}

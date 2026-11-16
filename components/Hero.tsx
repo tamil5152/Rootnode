@@ -1,4 +1,5 @@
 "use client";
+import SectionLink from "./SectionLink";
 import { motion } from "framer-motion";
 import Horizon from "./Horizon";
 import { site } from "@/site.config";
@@ -32,8 +33,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}
           className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
-          <a href="#contact" className="rounded-xl bg-white px-6 py-3 font-medium text-ink transition hover:bg-white/85">Start a project</a>
-          <a href="#roadmap" className="glass rounded-xl px-6 py-3 font-medium text-white/90 transition hover:bg-white/10">See how I work ↓</a>
+          <SectionLink href="/contact" className="rounded-xl bg-white px-6 py-3 font-medium text-ink transition hover:bg-white/85">Start a project</SectionLink>
+          <SectionLink href="/roadmap" className="glass rounded-xl px-6 py-3 font-medium text-white/90 transition hover:bg-white/10">See how I work ↓</SectionLink>
         </motion.div>
       </div>
     </section>

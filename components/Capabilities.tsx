@@ -1,3 +1,4 @@
+import SectionLink from "./SectionLink";
 import Horizon from "./Horizon";
 import Reveal from "./Reveal";
 
@@ -27,7 +28,7 @@ export default function Capabilities() {
             </Reveal>
           ))}
         </div>
-        <div className="mt-10 text-center"><a href="#contact" className="inline-block rounded-xl bg-white px-6 py-3 font-medium text-ink hover:bg-white/85">Discuss your project</a></div>
+        <div className="mt-10 text-center"><SectionLink href="/contact" className="inline-block rounded-xl bg-white px-6 py-3 font-medium text-ink hover:bg-white/85">Discuss your project</SectionLink></div>
       </div>
     </section>
   );
