@@ -77,7 +77,7 @@ function Screenshot({ p }: { p: Project }) {
       <div className="h-2 w-1/2 rounded bg-white/15" />
       <div className="mt-2 h-2 w-1/3 rounded bg-white/10" />
       <div className="mt-4 grid grid-cols-3 gap-2">{[0, 1, 2].map((i) => <div key={i} className="h-12 rounded-md bg-gradient-to-br from-ember/30 to-rose/15" />)}</div>
-      <span className="absolute bottom-3 right-3 text-[10px] text-muted">Screenshot coming soon</span>
+      <span className="absolute bottom-3 right-3 text-xs text-muted">Screenshot coming soon</span>
     </div>
   );
 }
@@ -96,7 +96,7 @@ export default function Testimonials() {
                 <p className="text-xs text-muted">{p.type}</p>
               </div>
               {p.isDemo ? (
-                <span className="rounded-full border border-sky/40 bg-sky/10 px-2.5 py-0.5 text-[11px] text-sky">Demo project</span>
+                <span className="rounded-full border border-sky/40 bg-sky/10 px-2.5 py-0.5 text-xs text-sky">Demo project</span>
               ) : (
                 <span className="text-sm tracking-widest text-ember" aria-label="5 star rating">★★★★★</span>
               )}
