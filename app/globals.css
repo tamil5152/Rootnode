@@ -32,7 +32,11 @@ body { background: var(--color-ink); color: #f3f4f7; }
 .animate-marquee { animation: marquee 45s linear infinite; }
 .animate-marquee:hover { animation-play-state: paused; }
 
+/* Hero headline: slides up on load but is never invisible (keeps LCP fast). */
+@keyframes hero-rise { from { transform: translateY(16px); } to { transform: none; } }
+.hero-rise { animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee { animation: none; }
+  .animate-marquee, .hero-rise { animation: none; }
   html { scroll-behavior: auto; }
 }

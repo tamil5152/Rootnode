@@ -13,7 +13,7 @@ function BrowserMock() {
 }
 function FlowMock() {
   return (
-    <div className="flex items-center justify-between rounded-xl border border-line bg-ink/80 p-4 text-[10px] text-muted">
+    <div aria-hidden className="flex items-center justify-between rounded-xl border border-line bg-ink/80 p-4 text-[10px] text-muted">
       {["Chat", "Auto", "Book"].map((n, i) => (
         <div key={n} className="flex items-center gap-2">
           <span className={`grid h-10 w-10 place-items-center rounded-lg border border-line ${i === 1 ? "bg-rose/25 text-white" : "bg-white/5"}`}>{n}</span>
@@ -26,7 +26,7 @@ function FlowMock() {
 function UptimeMock() {
   const bars = [6, 8, 7, 9, 8, 10, 9, 10, 10, 9, 10, 10];
   return (
-    <div className="rounded-xl border border-line bg-ink/80 p-4">
+    <div aria-hidden className="rounded-xl border border-line bg-ink/80 p-4">
       <div className="flex justify-between text-[10px] text-muted"><span>Uptime</span><span className="text-emerald-400">99.98%</span></div>
       <div className="mt-3 flex h-12 items-end gap-1">{bars.map((b, i) => <span key={i} className="flex-1 rounded-sm bg-sky/60" style={{ height: `${b * 10}%` }} />)}</div>
     </div>

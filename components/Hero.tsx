@@ -16,14 +16,13 @@ export default function Hero() {
         >
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" /> Taking on 2 new projects this month
         </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl"
-        >
+        {/* The headline is visible from the first paint (no fade-in), so Google
+            measures a fast Largest Contentful Paint. It only slides up slightly. */}
+        <h1 className="hero-rise text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
           Get more patients and bookings,
           <br />
           <span className="font-serif font-normal italic text-gradient">without chasing them.</span>
-        </motion.h1>
+        </h1>
         <motion.p
           initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
           className="mx-auto mt-6 max-w-xl text-lg text-white/70"
