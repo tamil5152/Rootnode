@@ -34,7 +34,7 @@ export default function Pricing() {
       <div className="mt-14 grid gap-5 md:grid-cols-3">
         {plans.map((p, i) => (
           <Reveal key={p.name} delay={i * 0.1} className={`glass relative flex flex-col rounded-3xl p-8 ${p.popular ? "ring-1 ring-ember/50" : ""}`}>
-            {p.popular && <span className="absolute right-6 top-6 rounded-full bg-gradient-to-r from-ember to-rose px-2.5 py-0.5 text-[10px] font-semibold text-ink">MOST POPULAR</span>}
+            {p.popular && <span className="absolute right-6 top-6 rounded-full bg-gradient-to-r from-ember to-rose px-2.5 py-0.5 text-xs font-semibold text-ink">MOST POPULAR</span>}
             <h3 className="text-lg font-medium">{p.name}</h3>
             {p.note && <p className="mt-1 text-xs text-ember">{p.note}</p>}
             <p className="mt-6 text-3xl font-semibold tracking-tight">{p.setup}</p>

@@ -6,7 +6,7 @@ export default function Footer() {
   const cols: [string, [string, string][]][] = [
     ["Navigation", [["Services", "/services"], ["Roadmap", "/roadmap"], ["Pricing", "/pricing"], ["FAQ", "/faq"]]],
     ["Contact", [[`WhatsApp ${whatsappDisplay}`, whatsappLink], [site.email, `mailto:${site.email}`], ["Book a call", site.calendarUrl]]],
-    ["Socials", [["LinkedIn", site.socials.linkedin], ["X", site.socials.x]]],
+    ["Socials", [["LinkedIn", site.socials.linkedin], ["X (Twitter)", site.socials.x]]],
   ];
   return (
     <footer className="border-t border-line">
@@ -19,8 +19,8 @@ export default function Footer() {
         {cols.map(([title, links]) => (
           <div key={title}>
             <p className="text-sm font-medium">{title}</p>
-            <ul className="mt-3 space-y-2 text-sm text-muted">
-              {links.map(([l, h]) => <li key={l}>{h.startsWith("/") ? <SectionLink href={h} className="hover:text-white">{l}</SectionLink> : <a href={h} {...(h.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="break-all hover:text-white">{l}</a>}</li>)}
+            <ul className="mt-2 space-y-0.5 text-sm text-muted">
+              {links.map(([l, h]) => <li key={l}>{h.startsWith("/") ? <SectionLink href={h} className="inline-block py-1.5 hover:text-white">{l}</SectionLink> : <a href={h} {...(h.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="inline-block break-all py-1.5 hover:text-white">{l}</a>}</li>)}
             </ul>
           </div>
         ))}

@@ -115,11 +115,11 @@ export default function Contact() {
             <span className="font-serif font-normal italic text-gradient">Let&apos;s build it.</span>
           </h2>
           <p className="mt-5 max-w-md text-white/70">Tell me about your project and I&apos;ll reply within one working day with next steps.</p>
-          <div className="mt-6 space-y-2 text-sm">
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/80 hover:text-white">
+          <div className="mt-6 space-y-1 text-sm">
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center gap-2 text-white/80 hover:text-white">
               <WhatsAppIcon className="h-4 w-4 text-[#25D366]" /> WhatsApp: <span className="underline">{whatsappDisplay}</span>
             </a>
-            <a href={`mailto:${site.email}`} className="flex items-center gap-2 break-all text-white/80 hover:text-white">
+            <a href={`mailto:${site.email}`} className="flex min-h-11 items-center gap-2 break-all text-white/80 hover:text-white">
               <span aria-hidden>✉</span> Email: <span className="underline">{site.email}</span>
             </a>
           </div>

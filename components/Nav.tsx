@@ -23,7 +23,7 @@ export default function Nav() {
         </SectionLink>
         <div className="hidden items-center gap-7 text-sm text-muted md:flex">
           {links.map(([label, href]) => (
-            <SectionLink key={label} href={href} className="transition hover:text-white">{label}</SectionLink>
+            <SectionLink key={label} href={href} className="py-2 transition hover:text-white">{label}</SectionLink>
           ))}
         </div>
         <div className="hidden items-center gap-2 md:flex">

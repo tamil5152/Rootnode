@@ -12,27 +12,24 @@ const title = `Websites for Clinics, Schools & Salons in Hosur | ${site.name}`;
 const description =
   "Rootnode builds websites, WhatsApp booking and Google Business setup for clinics, schools and salons in Hosur, Krishnagiri and Attibele. Live in 10 days.";
 
+// Google Search Console "HTML tag" code: set it in site.config.ts, or in the
+// GOOGLE_SITE_VERIFICATION environment variable in Vercel (then redeploy).
+const googleVerification = site.googleSiteVerification || process.env.GOOGLE_SITE_VERIFICATION;
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title,
   description,
-  applicationName: site.name,
-  keywords: [
-    "website design Hosur", "web designer Hosur", "clinic website", "school website", "salon website",
-    "WhatsApp booking", "Google Business Profile setup", "Krishnagiri", "Attibele",
-  ],
   alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
   openGraph: { title, description, type: "website", url: "/", siteName: site.name, locale: "en_IN" },
   twitter: { card: "summary_large_image", title, description },
-  robots: { index: true, follow: true },
-  // Google Search Console: paste the code from the "HTML tag" method into the
-  // GOOGLE_SITE_VERIFICATION environment variable in Vercel, then redeploy.
-  verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
+  ...(googleVerification ? { verification: { google: googleVerification } } : {}),
 };
 
 export const viewport: Viewport = { themeColor: "#07080c", colorScheme: "dark" };
 
-// Tells Google this is a local business in Hosur (helps "near me" searches).
+// Tells Google this is a local business in Hosur (helps local search results).
 const businessJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -43,7 +40,7 @@ const businessJsonLd = {
   image: `${site.url}/opengraph-image`,
   email: site.email,
   telephone: `+${WHATSAPP_NUMBER}`,
-  priceRange: "₹₹",
+  priceRange: `${site.currency}${site.currency}`,
   address: { "@type": "PostalAddress", addressLocality: "Hosur", addressRegion: "Tamil Nadu", addressCountry: "IN" },
   areaServed: ["Hosur", "Krishnagiri", "Attibele"].map((name) => ({ "@type": "City", name })),
 };
