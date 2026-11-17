@@ -6,7 +6,7 @@ import Reveal from "./Reveal";
 //   name        project / client name
 //   type        kind of business
 //   description what was built
-//   url         live link for the "View project" button
+//   url         live link for the "View project" button (leave "" to hide the card)
 //   isDemo      true = shows a "Demo project" label and hides the rating/quote
 //   image       optional screenshot path, e.g. "/projects/eden.png" (put the file in /public/projects)
 //   quote/role  optional client review (shown only when isDemo is false)
@@ -25,39 +25,46 @@ type Project = {
 export const PROJECTS: Project[] = [
   {
     name: "Velvet Lounge",
-    type: "Lounge & dining",
-    description: "Website and online table booking",
-    url: "#", // TODO: add the real project URL
+    type: "Beauty salon & luxury spa",
+    description: "Salon and spa website showcasing services and the brand",
+    url: "https://salon-spa-flax.vercel.app/",
     isDemo: true,
     role: "Owner",
     quote:
-      "Our guests can now see the menu, check events and reserve a table straight from their phone. Weekend bookings come in online instead of tying up our phone line, and the site looks as premium as the lounge itself.",
+      "Clients can now browse our services and get a feel for the salon straight from their phone, and the site looks as premium as the experience we offer.",
   },
   {
     name: "Eden Preschool",
-    type: "Preschool",
-    description: "School website and admissions enquiry form",
-    url: "#", // TODO: add the real project URL
+    type: "Pre-primary school",
+    description: "School website for Playgroup to UKG admissions",
+    url: "https://eden-preschool.vercel.app/",
     isDemo: true,
     role: "Principal",
     quote:
-      "Parents finally have one place to learn about our classes, facilities and admissions. Enquiries reach us neatly every day, and the team explained everything patiently so our staff can update photos and notices on our own.",
+      "Parents finally have one place to learn about our classes, timings and admissions, and the team explained everything patiently.",
+  },
+  {
+    name: "Belvo",
+    type: "Creative & branding agency",
+    description: "Agency website presenting brand-building services",
+    url: "https://belvo-lac.vercel.app/",
+    isDemo: true,
   },
   {
     name: "Sapience Abacus School",
     type: "Abacus & mental maths training",
-    description: "Website and student enrolment system",
-    url: "#", // TODO: add the real project URL
+    description: "Maths contest and progress platform with student, teacher, parent and admin logins",
+    url: "https://sapience-nine.vercel.app/",
     isDemo: false,
     role: "Director",
     quote:
-      "From batch timings to new enrolments, everything is organised in one simple system now. Parents enquire online, we follow up faster, and the website shows our results and programmes the way we always wanted.",
+      "Students take contests and track their progress, teachers manage questions and results, and parents can see how their child is doing, all in one simple system.",
   },
   {
     name: "Naivaidhya Hospital",
     type: "Hospital",
     description: "Hospital website and appointment booking",
-    url: "#", // TODO: add the real project URL
+    url: "", // Hidden until the live link is added
     isDemo: false,
     role: "Administrator",
     quote:
@@ -87,7 +94,7 @@ export default function Testimonials() {
     <section id="projects" className="mx-auto max-w-6xl px-4 py-28">
       <SectionHeading eyebrow="Our work" title="Projects" accent="I've built" />
       <div className="mt-14 grid gap-5 md:grid-cols-2">
-        {PROJECTS.map((p, i) => (
+        {PROJECTS.filter((p) => p.url).map((p, i) => (
           <Reveal key={p.name} delay={(i % 2) * 0.1} className="glass flex flex-col rounded-3xl p-6 sm:p-7">
             <Screenshot p={p} />
             <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
