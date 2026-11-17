@@ -18,7 +18,7 @@ export const site = {
   url: "https://rootnodesolutions.vercel.app",
   // Google Search Console "HTML tag" verification code: paste only the
   // content="..." value here, e.g. "abc123XYZ". Leave empty if not using it.
-  googleSiteVerification: "",
+  googleSiteVerification: "d8IVP10FM0wUyerkfYxTK6UZbDTrspLDDZCaHu6w97Y",
   tagline: "Websites, WhatsApp booking and Google setup for clinics, schools and salons in Hosur.",
   // Short company description shown in the footer.
   about:

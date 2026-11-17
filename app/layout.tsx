@@ -7,9 +7,14 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["italic"], variable: "--font-serif" });
 
-const title = `Websites, WhatsApp booking and Google setup for clinics, schools and salons in Hosur | ${site.name}`;
+// Kept under ~60 characters so Google shows it in full.
+const title = `Websites for Clinics, Schools & Salons in Hosur | ${site.name}`;
 const description =
-  "Rootnode builds websites, WhatsApp booking and Google Business setup for clinics, schools and salons in Hosur, Krishnagiri and Attibele, live in 10 days.";
+  "Rootnode builds websites, WhatsApp booking and Google Business setup for clinics, schools and salons in Hosur, Krishnagiri and Attibele. Live in 10 days.";
+
+// Google Search Console "HTML tag" code: set it in site.config.ts, or in the
+// GOOGLE_SITE_VERIFICATION environment variable in Vercel (then redeploy).
+const googleVerification = site.googleSiteVerification || process.env.GOOGLE_SITE_VERIFICATION;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -19,10 +24,10 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   openGraph: { title, description, type: "website", url: "/", siteName: site.name, locale: "en_IN" },
   twitter: { card: "summary_large_image", title, description },
-  ...(site.googleSiteVerification ? { verification: { google: site.googleSiteVerification } } : {}),
+  ...(googleVerification ? { verification: { google: googleVerification } } : {}),
 };
 
-export const viewport: Viewport = { themeColor: "#07080c" };
+export const viewport: Viewport = { themeColor: "#07080c", colorScheme: "dark" };
 
 // Tells Google this is a local business in Hosur (helps local search results).
 const businessJsonLd = {

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:mobile": "node tests/mobile-check.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.119.0",
