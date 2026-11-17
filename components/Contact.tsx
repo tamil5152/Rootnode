@@ -93,8 +93,8 @@ export default function Contact() {
       ? supabase.from("contact_messages").insert(row).then(({ error }) => !error, () => false)
       : Promise.resolve(false);
 
-    // 3) Also send a WhatsApp alert to you (runs on the server, the visitor
-    //    stays on this page). If it fails, the email above still goes out.
+    // 3) Also send an alert to your phone (Telegram and/or WhatsApp). Runs on
+    //    the server, the visitor stays on this page. If it fails, the email above still goes out.
     const whatsapp = fetch("/api/enquiry", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
