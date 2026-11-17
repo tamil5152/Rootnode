@@ -93,8 +93,19 @@ export default function Contact() {
       ? supabase.from("contact_messages").insert(row).then(({ error }) => !error, () => false)
       : Promise.resolve(false);
 
-    const [mailed, saved] = await Promise.all([mail, db]);
-    if (mailed || saved) {
+    // 3) Also send a WhatsApp alert to you (runs on the server, the visitor
+    //    stays on this page). If it fails, the email above still goes out.
+    const whatsapp = fetch("/api/enquiry", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...row, company: String(f.get("company") || "") }),
+    })
+      .then((r) => r.json())
+      .then((j) => j.ok === true)
+      .catch(() => false);
+
+    const [mailed, saved, alerted] = await Promise.all([mail, db, whatsapp]);
+    if (mailed || saved || alerted) {
       form.reset(); // clear the boxes
       setStatus("sent");
     } else {
@@ -125,6 +136,8 @@ export default function Contact() {
           </div>
         </div>
         <form onSubmit={onSubmit} className="glass space-y-3 rounded-3xl p-6 sm:p-8">
+          {/* Hidden from people; spam bots fill it in and get ignored. */}
+          <input name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
           <div className="grid gap-3 sm:grid-cols-2">
             <input name="name" required maxLength={120} placeholder="Your name" className={input} />
             <input name="email" required type="email" maxLength={200} placeholder="Email" className={input} />
