@@ -13,7 +13,7 @@ const plans = [
   },
   {
     name: "Growth",
-    setup: "₹15,000",
+    setup: "₹20,000",
     monthly: "₹3,000",
     popular: true,
     features: ["Everything in Starter, plus:", "Online booking", "Tamil and English version", "Basic Google ranking work"],
