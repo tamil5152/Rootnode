@@ -9,7 +9,7 @@ Framer Motion and (optionally) Supabase for the contact form.
 3. Open http://localhost:3000
 
 ## Make it yours
-- **Company name, footer description, email, socials:** edit `site.config.ts`
+- **Company name, footer description, email:** edit `site.config.ts`
 - **Text of each section:** each section is one file in `components/`
   (Hero, Stats, Services, Process, Capabilities, Compare, Testimonials, FAQ, Contact, Footer)
 - **Stats are samples. Client testimonials (components/Testimonials.tsx) are draft wordings: get each client to approve theirs.** Replace them with real ones before launch.

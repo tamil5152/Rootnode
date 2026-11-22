@@ -6,15 +6,13 @@ export default function Footer() {
   const cols: [string, [string, string][]][] = [
     ["Navigation", [["Services", "/services"], ["Roadmap", "/roadmap"], ["Pricing", "/pricing"], ["FAQ", "/faq"]]],
     ["Contact", [[`WhatsApp ${whatsappDisplay}`, whatsappLink], [site.email, `mailto:${site.email}`], ["Book a call", site.calendarUrl]]],
-    ["Socials", [["LinkedIn", site.socials.linkedin], ["X (Twitter)", site.socials.x]]],
   ];
   return (
     <footer className="border-t border-line">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-[1.6fr_1fr_1fr]">
         <div>
           <p className="flex items-center gap-2.5 font-semibold"><Logo className="h-4 w-auto" />{site.name}</p>
           <p className="mt-3 text-sm leading-relaxed text-muted">{site.about}</p>
-          <p className="mt-3 text-sm text-white/70">{site.areas}</p>
         </div>
         {cols.map(([title, links]) => (
           <div key={title}>

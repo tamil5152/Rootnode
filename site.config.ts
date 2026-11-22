@@ -23,14 +23,9 @@ export const site = {
   // Short company description shown in the footer.
   about:
     "Rootnode helps clinics, schools and salons get more patients, students and bookings online. We build fast websites, WhatsApp booking and Google setup, and keep everything running for you.",
-  areas: "Serving Hosur, Krishnagiri and Attibele",
   email: "rootnodesolutions.care@gmail.com", // ← email shown on the site
   enquiryEmail: "rootnodesolutions.care@gmail.com", // ← where enquiry form messages are sent
   minBudget: 8000,               // ← enquiries below this budget are not accepted
   calendarUrl: "/contact",        // ← e.g. your Calendly link
-  socials: {
-    linkedin: "https://linkedin.com/",
-    x: "https://x.com/",
-  },
   currency: "₹",
 };
