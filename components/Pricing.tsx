@@ -7,13 +7,15 @@ import { whatsappLink } from "@/site.config";
 const plans = [
   {
     name: "Starter",
-    setup: "₹8,000–12,000",
+    setup: "₹8,000",
+    from: true,
     monthly: "₹1,500",
     features: ["Professional website", "Google Business Profile", "WhatsApp click-to-chat", "Google Maps location", "Monthly updates"],
   },
   {
     name: "Growth",
-    setup: "₹20,000",
+    setup: "₹18,000",
+    from: true,
     monthly: "₹3,000",
     popular: true,
     features: ["Everything in Starter, plus:", "Online booking", "Tamil and English version", "Basic Google ranking work"],
@@ -37,7 +39,8 @@ export default function Pricing() {
             {p.popular && <span className="absolute right-6 top-6 rounded-full bg-gradient-to-r from-ember to-rose px-2.5 py-0.5 text-xs font-semibold text-ink">MOST POPULAR</span>}
             <h3 className="text-lg font-medium">{p.name}</h3>
             {p.note && <p className="mt-1 text-xs text-ember">{p.note}</p>}
-            <p className="mt-6 text-3xl font-semibold tracking-tight">{p.setup}</p>
+            {p.from && <p className="mt-6 text-xs font-medium uppercase tracking-wider text-muted">Starting from</p>}
+            <p className={`${p.from ? "mt-1" : "mt-6"} text-3xl font-semibold tracking-tight`}>{p.setup}</p>
             <p className="text-sm text-muted">one-time setup</p>
             <p className="mt-3 text-lg font-medium">+ {p.monthly}<span className="text-sm font-normal text-muted"> /month</span></p>
             <ul className="mt-6 flex-1 space-y-3 text-sm">
